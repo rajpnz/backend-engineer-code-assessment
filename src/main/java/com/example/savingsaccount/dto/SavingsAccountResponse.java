@@ -5,16 +5,16 @@ public class SavingsAccountResponse {
     private final String id;
     private final String accountNumber;
     private final String customerName;
-    private final String accountNickName;
+    private final String accountNickname;
 
-    public SavingsAccountResponse(String id, String accountNumber, String customerName, String accountNickName) {
+    public SavingsAccountResponse(String id, String accountNumber, String customerName, String accountNickname) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.customerName = customerName;
-        this.accountNickName = accountNickName;
+        this.accountNickname = accountNickname;
     }
-    public String getAccountNickName() {
-        return accountNickName;
+    public String getAccountNickname() {
+        return accountNickname;
     }
 
     public String getCustomerName() {

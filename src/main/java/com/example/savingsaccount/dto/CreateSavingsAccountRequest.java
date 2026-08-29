@@ -9,18 +9,18 @@ public class CreateSavingsAccountRequest {
     private final String customerName;
 
     @Size(min = 5, max = 30, message = "accountNickName must be between 5 and 30 characters")
-    private final String accountNickName;
+    private final String accountNickname;
 
-    public CreateSavingsAccountRequest(String customerName, String accountNickName) {
+    public CreateSavingsAccountRequest(String customerName, String accountNickname) {
         this.customerName = customerName;
-        this.accountNickName = accountNickName;
+        this.accountNickname = accountNickname;
     }
 
     public String getCustomerName() {
         return customerName;
     }
 
-    public String getAccountNickName() {
-        return accountNickName;
+    public String getAccountNickname() {
+        return accountNickname;
     }
 }
