@@ -7,8 +7,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class SavingsAccountService {
 
+    private final AccountNumberService accountNumberService;
+
+    public SavingsAccountService(AccountNumberService accountNumberService) {
+        this.accountNumberService = accountNumberService;
+    }
+
     public SavingsAccountResponse createAccount(CreateSavingsAccountRequest createSavingsAccountRequest){
-        return new SavingsAccountResponse("xyz", "123", createSavingsAccountRequest.getCustomerName(),
+        return new SavingsAccountResponse(accountNumberService.generateId(),
+                accountNumberService.generateAccountNumber(), createSavingsAccountRequest.getCustomerName(),
                 createSavingsAccountRequest.getAccountNickname());
     }
 
