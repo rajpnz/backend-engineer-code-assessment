@@ -24,6 +24,8 @@ public class SavingsAccountController {
         this.savingsAccountService = savingsAccountService;
     }
 
+    // TODO: Document API using a tool like Swagger
+    // TODO: Add authentication and authorisation
     @PostMapping
     public ResponseEntity<SavingsAccountResponse> createAccount(
             @Valid @RequestBody CreateSavingsAccountRequest createSavingsAccountRequest) {
@@ -32,6 +34,8 @@ public class SavingsAccountController {
         return ResponseEntity.created(location).body(response);
     }
 
+    // TODO: Document API using a tool like Swagger
+    // TODO: Add authentication and authorisation
     @GetMapping("/{accountId}")
     public ResponseEntity<SavingsAccountResponse> getAccount(@PathVariable String accountId) {
         SavingsAccountResponse response = savingsAccountService.getAccountById(accountId);
