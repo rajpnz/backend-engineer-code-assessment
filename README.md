@@ -1,4 +1,4 @@
-# Backend Developer Code Assessment 
+# Backend Engineer Code Assessment 
 ## Savings Account API
 
 A Spring Boot REST API for creating and retrieving savings bank accounts.
@@ -8,6 +8,7 @@ A Spring Boot REST API for creating and retrieving savings bank accounts.
 - **Java 21**
 - **Spring Boot 4.1.1** (Spring Web, Spring Data JPA, Spring Validation)
 - **Maven** — build tool
+- **PostgreSql** — database
 
 ## Features
 
@@ -57,11 +58,19 @@ GET /api/v1/savings-accounts/{accountNumber}
 
 - Java 21
 - Maven
+- PostgreSql database
+
+### PostgreSql database
+
+A PostgreSql database must be set up locally with a schema called `coding_assessment` that contains a table 
+named `account`. 
+The schema can be created by running the [Create Schema Script](sql/create_schema.sql), be sure to change the place holder password. 
+
 
 ### 1. Start application
 
 ```bash
-mvn spring-boot:run
+DATABASE_PASSWORD=XXXXX mvn spring-boot:run
 
 ```
 
