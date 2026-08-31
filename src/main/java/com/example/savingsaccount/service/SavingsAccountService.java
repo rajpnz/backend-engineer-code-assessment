@@ -3,7 +3,9 @@ package com.example.savingsaccount.service;
 import com.example.savingsaccount.component.OffensiveNicknameValidator;
 import com.example.savingsaccount.dto.CreateSavingsAccountRequest;
 import com.example.savingsaccount.dto.SavingsAccountResponse;
+import com.example.savingsaccount.entity.Account;
 import com.example.savingsaccount.exception.BusinessRuleViolationException;
+import com.example.savingsaccount.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,10 +13,12 @@ public class SavingsAccountService {
 
     private final AccountNumberService accountNumberService;
     private final OffensiveNicknameValidator offensiveNicknameValidator;
+    private final AccountRepository accountRepository;
 
-    public SavingsAccountService(AccountNumberService accountNumberService, OffensiveNicknameValidator offensiveNicknameValidator) {
+    public SavingsAccountService(AccountNumberService accountNumberService, OffensiveNicknameValidator offensiveNicknameValidator, AccountRepository accountRepository) {
         this.accountNumberService = accountNumberService;
         this.offensiveNicknameValidator = offensiveNicknameValidator;
+        this.accountRepository = accountRepository;
     }
 
     public SavingsAccountResponse createAccount(CreateSavingsAccountRequest createSavingsAccountRequest){
@@ -23,10 +27,11 @@ public class SavingsAccountService {
             throw new BusinessRuleViolationException("Account nickname is not allowed");
         }
         // TODO: If customer has 5 accounts or more return a Http 409 error
-        // TODO: Save bank account details to a Postgres database and handle database errors
-        return new SavingsAccountResponse(accountNumberService.generateId(),
-                accountNumberService.generateAccountNumber(), createSavingsAccountRequest.getCustomerName(),
+        Account accountToSave = new Account(accountNumberService.generateId(), accountNumberService.generateAccountNumber(), createSavingsAccountRequest.getCustomerName(),
                 createSavingsAccountRequest.getAccountNickname());
+        Account savedAccount = accountRepository.save(accountToSave);
+        return new SavingsAccountResponse(savedAccount.getId(), savedAccount.getAccountNumber(),
+                savedAccount.getCustomerName(), savedAccount.getAccountNickName());
     }
 
     public SavingsAccountResponse getAccountById(String accountId){
