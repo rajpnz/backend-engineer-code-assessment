@@ -30,17 +30,17 @@ public class Account {
     private String customerName;
 
     @Column(name = "account_nick_name", length = 30)
-    private String accountNickName;
+    private String accountNickname;
 
     protected Account() {
     }
 
     public Account(String id, String accountNumber, String customerName,
-                   String accountNickName) {
+                   String accountNickname) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.customerName = customerName;
-        this.accountNickName = accountNickName;
+        this.accountNickname = accountNickname;
     }
 
     public String getId() {
@@ -55,8 +55,8 @@ public class Account {
         return customerName;
     }
 
-    public String getAccountNickName() {
-        return accountNickName;
+    public String getAccountNickname() {
+        return accountNickname;
     }
 
     @Override

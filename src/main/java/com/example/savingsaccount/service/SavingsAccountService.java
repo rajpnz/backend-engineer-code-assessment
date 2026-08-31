@@ -31,7 +31,7 @@ public class SavingsAccountService {
                 createSavingsAccountRequest.getAccountNickname());
         Account savedAccount = accountRepository.save(accountToSave);
         return new SavingsAccountResponse(savedAccount.getId(), savedAccount.getAccountNumber(),
-                savedAccount.getCustomerName(), savedAccount.getAccountNickName());
+                savedAccount.getCustomerName(), savedAccount.getAccountNickname());
     }
 
     public SavingsAccountResponse getAccountById(String accountId){
