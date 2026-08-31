@@ -30,6 +30,6 @@ GRANT USAGE ON SCHEMA coding_assessment TO savings_user;
 -- Grant table-level privileges needed by the app (CRUD)
 GRANT SELECT, INSERT, UPDATE, DELETE ON coding_assessment.account TO savings_user;
 
--- Ensures savings_user automatically gets the same privileges on them too
+-- Ensures savings_user automatically gets the same privileges on any schema changes
 ALTER DEFAULT PRIVILEGES IN SCHEMA coding_assessment
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO savings_user;
